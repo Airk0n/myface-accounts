@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyFace.Models.Request
 {
@@ -19,6 +20,13 @@ namespace MyFace.Models.Request
         [Required]
         [StringLength(70)]
         public string Username { get; set; }
+        
+        [Required]
+        [StringLength(70)]
+        [MinLength(8)]
+        [PasswordPropertyText]
+        
+        public string Password { get; set; }
         
         public string ProfileImageUrl { get; set; }
         
