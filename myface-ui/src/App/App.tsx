@@ -12,7 +12,7 @@ import {CreatePost} from "../Pages/CreatePost/CreatePost";
 
 function Routes(): ReactElement {
     const loginContext = useContext(LoginContext);
-    
+
     if (!loginContext.isLoggedIn) {
         return <Login/>
     }
@@ -28,7 +28,7 @@ function Routes(): ReactElement {
     );
 }
 
-export default function App(): ReactElement {
+export default function App(this: any): ReactElement {
     return (
         <Router>
             <LoginManager>

@@ -7,6 +7,7 @@ using MyFace.Repositories;
 namespace MyFace.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("/posts")]
     public class PostsController : ControllerBase
     {    
@@ -17,7 +18,6 @@ namespace MyFace.Controllers
             _posts = posts;
         }
         
-        [Authorize]
         [HttpGet("")]
         public ActionResult<PostListResponse> Search([FromQuery] PostSearchRequest searchRequest)
         {

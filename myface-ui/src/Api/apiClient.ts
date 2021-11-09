@@ -40,13 +40,28 @@ export interface NewPost {
     userId: number;
 }
 
+const myHeaders = new Headers();
+//myHeaders.append("", "");
+myHeaders.append("Authorization", "Basic bWJlYWRlbGwycjpWZXJ5SGFja2FibGVQYXNzd29yZA==");
+
+
 export async function fetchUsers(searchTerm: string, page: number, pageSize: number): Promise<ListResponse<User>> {
-    const response = await fetch(`https://localhost:5001/users?search=${searchTerm}&page=${page}&pageSize=${pageSize}`);
+    const request = new Request(`https://localhost:5001/users?search=${searchTerm}&page=${page}&pageSize=${pageSize}`,{
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    });
+    const response = await fetch(request);
     return await response.json();
 }
 
 export async function fetchUser(userId: string | number): Promise<User> {
-    const response = await fetch(`https://localhost:5001/users/${userId}`);
+    const request = new Request(`https://localhost:5001/users/${userId}`,{
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    });
+    const response = await fetch(request);
     return await response.json();
 }
 

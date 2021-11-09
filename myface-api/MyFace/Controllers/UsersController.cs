@@ -7,6 +7,7 @@ using MyFace.Repositories;
 namespace MyFace.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("/users")]
     public class UsersController : ControllerBase
     {
