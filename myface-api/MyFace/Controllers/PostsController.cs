@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyFace.Models.Request;
 using MyFace.Models.Response;
 using MyFace.Repositories;
@@ -16,6 +17,7 @@ namespace MyFace.Controllers
             _posts = posts;
         }
         
+        [Authorize]
         [HttpGet("")]
         public ActionResult<PostListResponse> Search([FromQuery] PostSearchRequest searchRequest)
         {
@@ -30,6 +32,7 @@ namespace MyFace.Controllers
             var post = _posts.GetById(id);
             return new PostResponse(post);
         }
+        
 
         [HttpPost("create")]
         public IActionResult Create([FromBody] CreatePostRequest newPost)

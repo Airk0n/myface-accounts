@@ -141,7 +141,7 @@ namespace MyFace.Data
                 LastName = Data[index][1],
                 Username = Data[index][2],
                 HashedPassword = hashed,
-                Salt = Convert.ToBase64String(salt),
+                Salt = salt,
                 Email = Data[index][3],
                 ProfileImageUrl = ImageGenerator.GetProfileImage(Data[index][2]),
                 CoverImageUrl = ImageGenerator.GetCoverImage(index),
